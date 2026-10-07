@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f4ee" />
+    <title>BlockQuest — Mon tableau de quêtes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="BlockQuest, accueil">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <span>BLOCK<span class="brand-accent">QUEST</span></span>
+        </a>
+        <div class="topbar-right">
+          <span class="season-label"><span class="season-dot"></span> SAISON 01</span>
+          <button class="avatar-button" type="button" aria-label="Profil joueur">
+            <span class="mini-avatar" aria-hidden="true"><i></i></span>
+            <span class="avatar-name">PLAYER_01</span>
+          </button>
+        </div>
+      </header>
+
+      <main id="top" class="dashboard">
+        <section class="welcome-row" aria-labelledby="page-title">
+          <div>
+            <p class="eyebrow"><span class="eyebrow-square"></span> TON TABLEAU DE BORD</p>
+            <h1 id="page-title">SALUT, JOUEUR<span class="title-dot">.</span></h1>
+            <p class="welcome-copy">Chaque petite mission te rapproche du prochain niveau.</p>
+          </div>
+          <div class="level-chip"><span class="level-icon">★</span><span>NIVEAU <strong id="level-number">01</strong></span></div>
+        </section>
+
+        <section class="stats-strip" aria-label="Statistiques du joueur">
+          <div class="stat-block stat-xp">
+            <span class="stat-icon" aria-hidden="true">✦</span>
+            <div><span class="stat-label">XP GAGNÉE</span><strong id="xp-total">000</strong></div>
+            <span class="stat-tail">PTS</span>
+          </div>
+          <div class="stat-block stat-complete">
+            <span class="stat-icon" aria-hidden="true">✓</span>
+            <div><span class="stat-label">QUÊTES FINIES</span><strong id="completed-total">0</strong></div>
+            <span class="stat-tail">GG !</span>
+          </div>
+          <div class="stat-block stat-progress">
+            <div class="progress-copy"><span class="stat-label">PROGRESSION DU JOUR</span><strong id="progress-label">0%</strong></div>
+            <div class="progress-track" role="progressbar" aria-label="Progression des quêtes" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <span id="progress-fill"></span>
+            </div>
+          </div>
+        </section>
+
+        <div class="content-grid">
+          <section class="quest-board" aria-labelledby="quests-title">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow"><span class="eyebrow-square blue"></span> MODE AVENTURE</p>
+                <h2 id="quests-title">MES QUÊTES <span id="quest-count" class="count-badge">0</span></h2>
+              </div>
+              <button class="add-button" id="open-form" type="button"><span aria-hidden="true">+</span> NOUVELLE QUÊTE</button>
+            </div>
+
+            <form class="quest-form" id="quest-form" hidden>
+              <label class="sr-only" for="quest-input">Nom de la quête</label>
+              <input id="quest-input" name="quest" maxlength="70" placeholder="Ex. Terminer mon niveau..." autocomplete="off" required />
+              <button class="submit-button" type="submit">AJOUTER <span aria-hidden="true">↗</span></button>
+            </form>
+
+            <div class="filter-row" role="group" aria-label="Filtrer les quêtes">
+              <button class="filter-button is-active" type="button" data-filter="all" aria-pressed="true">TOUTES</button>
+              <button class="filter-button" type="button" data-filter="active" aria-pressed="false">À FAIRE</button>
+              <button class="filter-button" type="button" data-filter="completed" aria-pressed="false">TERMINÉES</button>
+            </div>
+
+            <ul class="quest-list" id="quest-list" aria-live="polite"></ul>
+            <p class="empty-state" id="empty-state" hidden>Pas de quête ici. Ajoute-en une et lance la partie !</p>
+          </section>
+
+          <aside class="side-column" aria-label="Résumé de la partie">
+            <section class="player-panel">
+              <div class="panel-topline"><span>TON AVATAR</span><span class="online-indicator">EN LIGNE</span></div>
+              <div class="avatar-stage">
+                <div class="avatar-shadow"></div>
+                <div class="block-avatar" aria-label="Avatar de joueur, personnage carré avec casquette verte">
+                  <div class="avatar-cap"><span></span></div>
+                  <div class="avatar-head"><i class="eye eye-left"></i><i class="eye eye-right"></i><span class="smile"></span></div>
+                  <div class="avatar-body"></div>
+                  <div class="avatar-leg leg-left"></div><div class="avatar-leg leg-right"></div>
+                  <div class="avatar-arm arm-left"></div><div class="avatar-arm arm-right"></div>
+                </div>
+                <span class="stage-spark spark-one">✦</span><span class="stage-spark spark-two">✦</span>
+              </div>
+              <div class="player-info"><strong>PLAYER_01</strong><span>Explorateur novice</span></div>
+              <div class="rank-line"><span>XP AVANT NIVEAU 2</span><strong id="next-level-xp">100 XP</strong></div>
+              <div class="rank-track"><span id="rank-fill"></span></div>
+            </section>
+
+            <section class="tip-panel">
+              <div class="tip-icon" aria-hidden="true">!</div>
+              <div><p class="tip-label">ASTUCE DU JOUR</p><p class="tip-copy">Une quête à la fois. Tu gères !</p></div>
+              <span class="tip-block" aria-hidden="true"></span>
+            </section>
+          </aside>
+        </div>
+        <footer class="page-footer"><span>BLOCKQUEST</span><span>TA JOURNÉE, TON AVENTURE.</span><span class="footer-cube" aria-hidden="true"></span></footer>
+      </main>
+    </div>
+  </body>
+</html>

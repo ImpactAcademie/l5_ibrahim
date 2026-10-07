@@ -1,0 +1,25 @@
+{
+  "name": "l5_ibrahim",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "json-server db.json --port 3500"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImpactAcademie/l5_ibrahim.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ImpactAcademie/l5_ibrahim/issues"
+  },
+  "homepage": "https://github.com/ImpactAcademie/l5_ibrahim#readme",
+  "dependencies": {
+    "json-server": "^1.0.0-beta.15"
+  }
+}
